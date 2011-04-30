@@ -18,6 +18,11 @@
 				this.objects[id] = obj;
 				this.drawn[id] = false;
 				
+				// Sort the objects by layer - lower layers should be drawn first
+				this.objects.sort(function(a, b) {
+					return a.layer > b.layer;
+				});
+				
 				return id;
 			},
 			
@@ -63,11 +68,6 @@
 				if (this.core.settings.clearEachFrame || forceClear) {
 					this.clear();
 				}
-				
-				// Sort the objects by layer - lower layers should be drawn first
-				objects.sort(function(a, b) {
-					return a.layer > b.layer;
-				});
 				
 				// Loop through all objects
 				for (i in objects) {

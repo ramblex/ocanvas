@@ -80,6 +80,18 @@
 													return;
 												}
 												
+												// Don't trigger drag events if there is another object in the same position
+												// on a higher layer.
+												// Assume that the objects array has already been sorted in ascending 
+												// layer order
+												if (type === "mousedown") {
+													for (idx = obj.id + 1; idx < core.draw.lastObjectID; ++idx) {
+														if (core.draw.objects[idx].isPointerInside(core.pointer.start_pos)) {
+															return;
+														}
+													}
+												}
+												
 												// Set status and trigger callback
 												if (type !== "touchend") {
 													obj.events[pointer + "ontarget"] = true;
