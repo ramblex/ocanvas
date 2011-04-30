@@ -14,7 +14,7 @@
 		return {
 
 			// Properties
-			layer: 0,
+			layer: -1,
 			id: 0,
 			shapeType: "rectangular",
 			type: "",
@@ -641,6 +641,11 @@
 			
 				// Check if the child object doesn't already have a parent
 				if (childObj.parent === undefined) {
+				
+					// Give the child object the same layer as the parent
+					if (childObj.layer === -1) {
+						childObj.layer = this.layer;
+					}
 				
 					// Add the object as a child
 					var index = this.children.push(childObj) - 1;
