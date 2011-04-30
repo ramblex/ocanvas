@@ -14,6 +14,7 @@
 		return {
 
 			// Properties
+			layer: 0,
 			id: 0,
 			shapeType: "rectangular",
 			type: "",

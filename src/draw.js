@@ -7,7 +7,7 @@
 		return {
 
 			// Set properties
-			objects: {},
+			objects: [],
 			drawn: {},
 			lastObjectID: 0,
 			translation: { x: 0, y: 0 },
@@ -63,6 +63,11 @@
 				if (this.core.settings.clearEachFrame || forceClear) {
 					this.clear();
 				}
+				
+				// Sort the objects by layer - lower layers should be drawn first
+				objects.sort(function(a, b) {
+					return a.layer > b.layer;
+				});
 				
 				// Loop through all objects
 				for (i in objects) {
