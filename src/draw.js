@@ -20,7 +20,7 @@
 				
 				// Sort the objects by layer - lower layers should be drawn first
 				this.objects.sort(function(a, b) {
-					return a.layer > b.layer;
+					return a.layer - b.layer;
 				});
 				
 				return id;
